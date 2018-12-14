@@ -1,21 +1,29 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const webpack = require('webpack');
 module.exports = {
     mode: 'development',
     entry: {
         app: './src/app/index.js',
-        vender: './src/vender/index.js'
+        // vender: './src/vender/index.js'
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].js'
+        filename: '[name].js',
+        // publicPath: '/'
+    },
+    devtool: 'inline-source-map',
+    devServer: {
+        contentBase: './dist',
+        hot: true
     },
     plugins: [
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
             title: 'Output Management'
-        })
+        }),
+        new webpack.HotModuleReplacementPlugin()
     ],
     module: {
         rules: [{
@@ -38,7 +46,6 @@ module.exports = {
             use: [
                 'file-loader'
             ]
-        }
-    ]
+        }]
     }
 }
