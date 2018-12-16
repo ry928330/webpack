@@ -1,6 +1,5 @@
 import './style.css';
 import {cube} from '../math';
-import {cubic} from '../math';
 
 var vender = require('../vender/index');
 window.onload = function() {
@@ -13,6 +12,6 @@ window.onload = function() {
     div.innerHTML = 'hello, world';
     document.body.appendChild(div);
 
-    console.log(2333, cube(5), cubic(6));
+    console.log(2333, cube(5));
 
 }
